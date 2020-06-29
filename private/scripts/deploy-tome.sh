@@ -24,5 +24,5 @@ $DRUSH cr
 $DRUSH tome:static --uri=$SITE_URL
 
 # Add CNAME and other goodies.
-cp ../lmt_build_extras/* ../html/.
+cp ../tome_build_extras/* ../html/.
 echo "${SITE_URL##*/}" > ../html/CNAME
