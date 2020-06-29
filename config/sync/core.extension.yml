@@ -1,9 +1,11 @@
 module:
+  require_login: -1000
   automated_cron: 0
   big_pipe: 0
   block: 0
   block_content: 0
   breakpoint: 0
+  build_hooks: 0
   ckeditor: 0
   color: 0
   config: 0
@@ -45,6 +47,10 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  tome_base: 0
+  tome_deploy_gh_actions: 0
+  tome_require_login: 0
+  tome_static: 0
   toolbar: 0
   tour: 0
   update: 0
