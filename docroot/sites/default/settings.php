@@ -729,12 +729,9 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * example.org, with all subdomains included.
  */
 $settings['trusted_host_patterns'] = [
-  '^cms\.lindsaymtaylor\.com$', // CMS Access (Prod)
-  '^www\.lindsaymtaylor\.com$', // Live access (for Tome) (Prod)
-  '^lindsaymtaylor\.com$', // Live access (for Tome) (Prod)
-  '^dev\.lindsaymtaylor\.com$', // Live access (for Tome) (Dev)
-  '^local\.lmt\.com$', // Local
-  '^test\.lmt\.com$', // Local tests
+  '^tomecms\.curtisogle\.com$', // CMS Access (Prod)
+  '^tome\.curtisogle\.com$', // Live access (for Tome) (Prod)
+  '^local\.tome\.com$', // Local
 ];
 
 /**
