@@ -790,7 +790,7 @@ $databases['default']['default'] = array (
 );
 
 $settings['tome_static_directory'] = $_ENV['SITE_TOME_DIRECTORY'];
-$config['build_hooks.frontend_environment.prod']['settings']['gh_token'] = $_ENV['SITE_GITHUB_ACCESS_TOKEN'];
+$config['build_hooks.frontend_environment.github_pages']['settings']['gh_token'] = $_ENV['SITE_GITHUB_ACCESS_TOKEN'];
 
 /**
  * Load local development override configuration, if available.
