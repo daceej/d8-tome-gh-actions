@@ -13,23 +13,52 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "docroot/modules/custom"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dinbror/blazy",
+                "version": "1.8.2",
+                "type": "drupal-library",
+                "extra": {
+                  "installer-name": "blazy"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/dinbror/blazy",
+                    "reference": "1.8.2"
+                }
+            }
         }
     ],
     "require": {
         "php": ">=5.6",
-        "composer/installers": "^1.2",
+        "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
-        "drupal/console": "^1.0.2",
-        "drupal/core": "^8.7.0",
-        "drupal/kint": "^2.1",
+        "drupal/admin_toolbar": "^2.0",
+        "drupal/adminimal_theme": "^1.5",
+        "drupal/build_hooks": "^2.2",
+        "drupal/config_ignore": "^2.2",
+        "drupal/console": "^1.9",
+        "drupal/core-recommended": "^8.8",
+        "drupal/pathauto": "^1.6",
+        "drupal/redirect": "^1.4",
+        "drupal/require_login": "^2.1",
+        "drupal/tome": "^1.2",
+        "drupal/tome_require_login": "^1.0",
+        "drupal/viewsreference": "^1.4",
         "drush/drush": "^9.0.0",
+        "php-http/guzzle6-adapter": "^1.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "webflo/drupal-core-require-dev": "^8.7.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -78,9 +107,9 @@
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
+        },
+        "patches": {
+
         }
-    },
-    "config": {
-      "sort-packages": true
     }
 }
