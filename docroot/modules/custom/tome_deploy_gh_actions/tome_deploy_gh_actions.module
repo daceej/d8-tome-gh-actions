@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the Tome Deploy GitHub Actions module.
+ */
+
+use Drupal\Core\Site\Settings;
+
+/**
+ * Implements hook_entity_load().
+ * 
+ * Config overrides are not considered by default. This hook implementation 
+ * pulls the overridable config in its place.
+ */
+function tome_deploy_gh_actions_entity_load(array $entities, $entity_type) {
+  if ($entity_type !== 'frontend_environment') {
+    return;
+  }
+
+  foreach ($entities as $entity) {
+    $settings = $entity->get('settings');
+
+    if ($settings['id'] !== 'github_actions') {
+      continue;
+    }
+
+    $id = $entity->get('id');
+    $overrides = \Drupal::config('build_hooks.frontend_environment.' . $id);
+
+    if (!$overrides->hasOverrides()) {
+      continue;
+    }
+
+    foreach ($overrides->getRawData() as $key => $val) {
+      $entity->set($key, $overrides->get($key)); 
+    }
+  }
+}

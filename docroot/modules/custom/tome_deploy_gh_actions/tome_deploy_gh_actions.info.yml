@@ -1,0 +1,7 @@
+name: 'Tome Deploy GitHub Actions'
+type: module
+description: 'GitHub Actions build hooks implementation for use with Tome.'
+core: 8.x
+
+dependencies:
+  - build_hooks
