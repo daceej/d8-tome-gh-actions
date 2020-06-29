@@ -4,6 +4,9 @@ This is a proof of concept to show how a Drupal 8 site could be built and hosted
 
 This is not a perfect setup for doing this by any means. However, I wanted to show how to do this using GitHub Actions and GitHub pages as they are inexpensive and can get the job done with a little but of work. You could easily apply these same strategies to a sandbox site on Pantheon and host your Drupal site for free.
 
+**Helpful Links:**
+* [See the Demo](https://tome.curtisogle.com)
+* [Actions Logs](https://github.com/daceej/d8-tome-gh-actions/actions)
 
 ## How it Works
 
