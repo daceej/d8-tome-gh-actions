@@ -1,0 +1,22 @@
+uuid: 2fe4b22d-be0c-45d8-8284-044157d76918
+langcode: en
+status: true
+dependencies:
+  module:
+    - tome_deploy_gh_actions
+id: github_pages
+label: 'GitHub Pages'
+weight: '0'
+provider: null
+plugin: github_actions
+settings:
+  id: github_actions
+  label: null
+  provider: tome_deploy_gh_actions
+  gh_deploy_url: 'https://api.github.com/repos/daceej/d8-tome-gh-actions/deployments'
+  branch: master
+  gh_token: 'NOTHING TO SEE HERE'
+  environment_key: github_pages
+  environment_url: 'https://tome.curtisogle.com'
+url: 'https://tome.curtisogle.com'
+deployment_strategy: manual

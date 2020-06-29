@@ -1,0 +1,95 @@
+name: Deploy to GitHub Pages
+
+# This workflow is triggerd via the deployment api. 
+
+# Another alternative is to use on:repository_dispatch. Using this method you
+# do get more control over enviornment data, but has a few quirks such as they 
+# only work on the master branch or on the default branch. This is a simple 
+# demo, so on:deployment will do just fine. I'm sure things will improve over 
+# time as GitHub Actions is adopted. I'd also like to check on the status of 
+# the deployment on the Drupal side eventually.
+
+on:
+  deployment
+
+jobs:
+
+  # This job is not necessary, but is generally a good idea. The GitHub deploy
+  # api and its integrations with GitHub Actions is not great. Any workflows
+  # configured as on:deployment will get triggerd regardless of enviornment 
+  # variables passed via the api. So, I'm using this as a way to guarntee we 
+  # check where we are SUPPOSED to deploy before actually deploying.
+  env-check:
+    name: Confirming Enviornment Variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Confirming Enviornment Variables
+        run: |
+          echo "This run is intended for ${{ github.event.deployment.environment }}."
+          echo "The url for this run is ${{ github.event.deployment.payload.url }}."
+
+      - name: Log Invalid Enviornment
+        if:  ${{ github.event.deployment.environment != 'github_pages' }}
+        run: echo "Skipping the deploy job."
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: env-check
+    if:  ${{ github.event.deployment.environment == 'github_pages' }}
+  
+    steps:
+      - name: SSH Setup
+        run: |
+          mkdir ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KNOWN_HOST }}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Shutdown default MySQL
+        run: sudo service mysql stop
+
+      - name: Database Setup
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: '5.7' 
+          mysql database: 'ci' 
+          mysql user: 'ci' 
+          mysql password: 'ci' 
+
+      - name: Clone production repository
+        uses: actions/checkout@v2
+        with: 
+          repository: daceej/d8-tome-gh-actions
+          token: ${{ secrets.GH_PAT }}
+          ref: master
+          path: tome_demo_deploy
+
+      - name: Build production site
+        run: | 
+          cd tome_demo_deploy/docroot
+          ../private/scripts/deploy-tome.sh ${{ github.event.deployment.payload.url }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_PAT }}
+          external_repository: daceej/d8-tome-gh-actions
+          publish_dir: ./tome_demo_deploy/html
+          publish_branch: gh-pages
+          
+      - name: 'Update Deploy Status'
+        if: always()
+        uses: unacast/actions-github-deployment-status@v0.3.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          status: ${{ job.status }}
+          description: "Site has been deployed to dev."
+      

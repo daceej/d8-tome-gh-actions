@@ -280,7 +280,7 @@ $config_directories = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'q2Sko4d_obC-ZqsBjKCvKrCw-W3ZZoJx-txVrN-DcEICdZkmDCXX9ucPx4XSJ_JtAp4XFzmKew';
 
 /**
  * Deployment identifier.
@@ -728,6 +728,11 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
+$settings['trusted_host_patterns'] = [
+  '^tomecms\.curtisogle\.com$', // CMS Access (Prod)
+  '^tome\.curtisogle\.com$', // Live access (for Tome) (Prod)
+  '^local\.tome\.com$', // Local
+];
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
@@ -764,6 +769,30 @@ $settings['entity_update_batch_size'] = 50;
 $settings['entity_update_backup'] = TRUE;
 
 /**
+ * Load in "environment variables". Would be nice to use .env or something in
+ * the future.
+ */
+if (file_exists('../')) {
+  include '../secure_settings.php';
+}
+
+$settings['config_sync_directory'] = '../config/sync';
+
+$databases['default']['default'] = array (
+  'database' => $_ENV['SITE_DB_NAME'],
+  'username' => $_ENV['SITE_DB_USER'],
+  'password' => $_ENV['SITE_DB_PASS'],
+  'prefix' => '',
+  'host' => $_ENV['SITE_DB_HOST'],
+  'port' => $_ENV['SITE_DB_PORT'],
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+
+$settings['tome_static_directory'] = $_ENV['SITE_TOME_DIRECTORY'];
+$config['build_hooks.frontend_environment.github_pages']['settings']['gh_token'] = $_ENV['SITE_GITHUB_ACCESS_TOKEN'];
+
+/**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,
@@ -773,8 +802,6 @@ $settings['entity_update_backup'] = TRUE;
  *
  * Keep this code block at the end of this file to take full effect.
  */
-#
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
-$config_directories['sync'] = '../config/sync';
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}

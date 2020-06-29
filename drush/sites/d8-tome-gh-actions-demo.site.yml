@@ -1,0 +1,20 @@
+
+local:
+  host: 'local.tome.com'
+  options: {  }
+  root: '/var/www/drupalvm/docroot'
+  uri: 'local.lmt.com'
+  user: 'vagrant'
+  ssh:
+    tty: 0
+    options: '-o "SendEnv PHP_IDE_CONFIG PHP_OPTIONS XDEBUG_CONFIG" -o PasswordAuthentication=no -i "${env.home}/.vagrant.d/insecure_private_key"'
+
+cms:
+  host: remote.curtisogle.com
+  user: web
+  root: /var/www/tome-demo/docroot
+  uri: tomecms.curtisogle.com
+  ssh:
+    tty: 0
+  paths:
+    drush-script: '/var/www/tome-demo/vendor/bin/drush'

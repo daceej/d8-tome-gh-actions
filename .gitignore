@@ -21,3 +21,9 @@
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore secure_settings.php
+/secure_settings.php
+
+# Ignore default tome generation.
+/html/
