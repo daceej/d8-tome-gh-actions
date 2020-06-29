@@ -1,18 +1,21 @@
 #!/bin/bash
 
-directory=$(pwd)
-
-if [ $directory != '/home/cj/Code/drex_v1/docroot' ]; then
-  echo 'ERROR: You must run this script from the docroot.'
-  exit 1
-fi
+DRUSH=../vendor/bin/drush
 
 echo 'INFO: Ensuring that all Drupal dependencies are present.'
-yes | composer install
+pushd ../
+composer install
+popd
 
-drush sql:create -y
-drush site:install [PROFILE] -y
-drush cr
-drush uli -l [SITE URL]
+$DRUSH @d8-tome-gh-actions-demo.cms sql-dump > tome.sql
+$DRUSH @self sql-create -y
+$DRUSH @self sql-cli < tome.sql
+rm tome.sql
+$DRUSH -y rsync @d8-tome-gh-actions-demo.cms:/var/www/tome-demo/docroot/sites/default/files/ sites/default/files -- --delete
+
+../private/scripts/release.sh
+
+$DRUSH @self cr
+$DRUSH @self uli -l http://local.tome.com
 
 echo "DONE"

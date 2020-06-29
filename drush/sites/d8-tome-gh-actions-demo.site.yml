@@ -12,9 +12,9 @@ local:
 cms:
   host: remote.curtisogle.com
   user: web
-  root: /var/www/curtisogle/docroot
+  root: /var/www/tome-demo/docroot
   uri: tomecms.curtisogle.com
   ssh:
     tty: 0
   paths:
-    drush-script: '/var/www/d8-tome-gh-actions-demo/vendor/bin/drush'
+    drush-script: '/var/www/tome-demo/vendor/bin/drush'
