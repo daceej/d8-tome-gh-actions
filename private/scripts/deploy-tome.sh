@@ -9,7 +9,7 @@ cp ci_secure_settings.php secure_settings.php
 popd
 
 echo "Downloading site database"
-$DRUSH @lmt.cms sql-dump > tome.sql
+$DRUSH @d8-tome-gh-actions-demo.cms sql-dump > tome.sql
 
 echo "Importing site database"
 $DRUSH @self sql-create -y
@@ -17,7 +17,7 @@ $DRUSH @self sql-cli < tome.sql
 rm tome.sql
 
 echo "Downloading site files"
-$DRUSH -y rsync @lmt.cms:/var/www/lindsaymtaylor/docroot/sites/default/files/ sites/default/files -- --delete
+$DRUSH -y rsync @d8-tome-gh-actions-demo.cms:/var/www/tome-demo/docroot/sites/default/files/ sites/default/files -- --delete
 
 echo "Building the static site"
 $DRUSH cr
