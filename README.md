@@ -23,3 +23,9 @@ This is not a perfect setup for doing this by any means. However, I wanted to sh
 1. [Deploy Workflow](.github/workflows/deploy-github-pages.yml)
 1. [Tome Deploy](private/scripts/deploy-tome.sh)
 
+
+## (Possible) Future Enhancements
+
+1. This currently does not do a good job of tracking the deploy once kicked off on the Drupal site (it doesn't do anything at all, actually).
+1. The (Build Hooks)[https://drupal.org/project/build_hooks] module reports changes after the deployment. I'm assuming I'm doing something wrong, but hey -- I built this in a day. I'm also not convinced that the Build Hooks module is here to stay. The project has not had a release in quite a while, so this may be reworked to stand on its own eventually.
+1. Hopefully GitHub Actions and other GitHub apis are extended in the future. Right now the feel somewhat limiting.
