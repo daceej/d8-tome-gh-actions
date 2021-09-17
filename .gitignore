@@ -27,3 +27,6 @@
 
 # Ignore default tome generation.
 /html/
+
+# Ignore keys that are to be kept secret.
+/keys/
