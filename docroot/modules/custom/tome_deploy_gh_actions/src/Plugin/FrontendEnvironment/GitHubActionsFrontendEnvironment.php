@@ -98,7 +98,7 @@ class GitHubActionsFrontendEnvironment extends FrontendEnvironmentBase implement
     // Only update the token if it was entered and it changed.
     if (
         !empty($form_state->getValue('gh_token'))
-        && $this->configuration['gh_token'] !== $form_state->getValue('gh_token') 
+        && $this->configuration['gh_token'] !== $form_state->getValue('gh_token')
       ) {
       $this->configuration['gh_token'] = $form_state->getValue('gh_token');
     }
@@ -119,7 +119,7 @@ class GitHubActionsFrontendEnvironment extends FrontendEnvironmentBase implement
     $buildHookDetails = new BuildHookDetails();
     $buildHookDetails->setUrl($this->configuration['gh_deploy_url']);
     $buildHookDetails->setMethod('POST');
-    $buildHookDetails->setBody([
+    $buildHookDetails->setOptions([
       'json' => [
         'ref' => $this->configuration['branch'],
         'environment' => $this->configuration['environment_key'],
