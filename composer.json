@@ -48,10 +48,11 @@
         "drupal/tome": "^1.2",
         "drupal/tome_require_login": "^1.0",
         "drush/drush": "^10",
-        "symfony/config": "^3.4",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
-    "require-dev": {},
+    "require-dev": {
+        "drupal/core-dev": "^8.9.19"
+    },
     "conflict": {
         "drupal/drupal": "*"
     },
@@ -59,25 +60,6 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true
-    },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ]
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
