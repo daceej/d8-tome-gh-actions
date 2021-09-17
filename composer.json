@@ -51,7 +51,7 @@
         "drupal/tome": "^1.2",
         "drupal/tome_require_login": "^1.0",
         "drupal/viewsreference": "^1.4",
-        "drush/drush": "^9.0.0",
+        "drush/drush": "^10",
         "symfony/config": "^3.4",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
