@@ -25,7 +25,7 @@
                 "version": "1.8.2",
                 "type": "drupal-library",
                 "extra": {
-                  "installer-name": "blazy"
+                    "installer-name": "blazy"
                 },
                 "source": {
                     "type": "git",
@@ -39,12 +39,12 @@
         "php": ">=5.6",
         "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^2.0",
         "drupal/adminimal_theme": "^1.5",
         "drupal/build_hooks": "^2.2",
         "drupal/config_ignore": "^2.2",
         "drupal/console": "^1.9",
+        "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/pathauto": "^1.6",
         "drupal/redirect": "^1.4",
@@ -58,8 +58,7 @@
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
-    "require-dev": {
-    },
+    "require-dev": {},
     "conflict": {
         "drupal/drupal": "*"
     },
@@ -81,12 +80,10 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@composer drupal:scaffold"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@composer drupal:scaffold"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
@@ -95,21 +92,30 @@
             "drupal/core": "-p2"
         },
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/{$name}": ["type:drupal-drush"]
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "drupal-scaffold": {
-            "initial": {
-                ".editorconfig": "../.editorconfig",
-                ".gitattributes": "../.gitattributes"
+            "locations": {
+                "web-root": "docroot/"
             }
         },
-        "patches": {
-
-        }
+        "patches": {}
     }
 }
