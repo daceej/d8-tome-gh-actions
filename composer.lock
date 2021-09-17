@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05159e27aec8e1d845f9ecb4351a8837",
+    "content-hash": "9368a5ff9803a44053bedf34727b8c7c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1680,17 +1680,17 @@
         },
         {
             "name": "drupal/build_hooks",
-            "version": "2.6.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/build_hooks.git",
-                "reference": "8.x-2.6"
+                "reference": "3.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/build_hooks-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "955f70cf2c9b6ab7a8280d02ec7e2e42b12caeb6"
+                "url": "https://ftp.drupal.org/files/projects/build_hooks-3.2.1.zip",
+                "reference": "3.2.1",
+                "shasum": "e18e2f882b838d6b79c31211e79a4444a1430ea2"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -1699,8 +1699,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1617654758",
+                    "version": "3.2.1",
+                    "datestamp": "1625097195",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
