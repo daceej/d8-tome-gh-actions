@@ -6,3 +6,4 @@ excluded_404: true
 excluded_paths: /user/login
 _core:
   default_config_hash: GVTXNvHCoxb7wi72IdC2OY5TRiPZNdHACAS8-Isl-EE
+excluded_routes: "simplesamlphp_auth.saml_login\nsamlauth.saml_controller_login\nsamlauth.saml_controller_logout\nsamlauth.saml_controller_metadata\nsamlauth.saml_controller_acs\nsamlauth.saml_controller_sls\nsamlauth.saml_controller_changepw"
