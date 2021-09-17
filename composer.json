@@ -43,7 +43,6 @@
         "drupal/adminimal_theme": "^1.5",
         "drupal/build_hooks": "^2.2",
         "drupal/config_ignore": "^2.2",
-        "drupal/console": "^1.9",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/pathauto": "^1.6",
@@ -53,9 +52,7 @@
         "drupal/tome_require_login": "^1.0",
         "drupal/viewsreference": "^1.4",
         "drush/drush": "^9.0.0",
-        "php-http/guzzle6-adapter": "^1.1",
-        "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3",
+        "symfony/config": "^3.4",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {},
